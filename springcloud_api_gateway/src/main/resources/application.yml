@@ -1,0 +1,29 @@
+server:
+  port: 3333
+spring:
+  application:
+    name: api-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka/
+#服务路由：推荐使用serviceId方式配置路由，方便后期维护
+zuul:
+  routes:
+    zuul-service-url:
+    #通过path/url方式配置路由: 以/zuul-service-url开头的请求都转发到zuul-service
+      path: /zuul-service-url/**
+      url: http://localhost:2222/
+    #通过path/serviceId方式配置路由: 以/zuul-service-serviceId开头的请求都转发到zuul-service
+    zuul-service-serviceId:
+      path: /zuul-service-serviceId/**
+      #对应注册到Eureka中的serviceId
+      serviceId:  zuul-service
+#通过配置以上路由，前台我们访问地址：
+# http://localhost:3333/zuul-service-url/getInfo/weixiaohuai
+# >>>>>路由到(实际请求的地址)>>>>>
+# http://localhost:2222/getInfo/weixiaohuai
+
+# http://localhost:3333/zuul-service-serviceId/getInfo/weixiaohuai
+# >>>>>路由到(实际请求的地址)>>>>>
+# http://localhost:2222/getInfo/weixiaohuai
