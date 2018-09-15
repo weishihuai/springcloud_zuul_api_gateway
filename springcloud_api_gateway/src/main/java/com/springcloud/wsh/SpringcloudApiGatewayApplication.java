@@ -8,8 +8,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 
-import java.net.PasswordAuthentication;
-
 /**
  * @Description: api网关启动类
  * @Author: WeiShiHuai
@@ -30,13 +28,13 @@ public class SpringcloudApiGatewayApplication {
         SpringApplication.run(SpringcloudApiGatewayApplication.class, args);
     }
 
-//    @Bean
-//    AccessUsernameZuulFilter accessUsernameZuulFilter() {
-//        return new AccessUsernameZuulFilter();
-//    }
-//
-//    @Bean
-//    AccessPasswordZuulFilter accessPasswordZuulFilter() {
-//        return new AccessPasswordZuulFilter();
-//    }
+    @Bean
+    AccessUsernameZuulFilter accessUsernameZuulFilter() {
+        return new AccessUsernameZuulFilter();
+    }
+
+    @Bean
+    AccessPasswordZuulFilter accessPasswordZuulFilter() {
+        return new AccessPasswordZuulFilter();
+    }
 }

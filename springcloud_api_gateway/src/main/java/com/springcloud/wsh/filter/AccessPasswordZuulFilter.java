@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @Title: MyZuulFilter
+ * @Title: AccessPasswordZuulFilter
  * @ProjectName springcloud_zuul_api_gateway
  * @Description: 校验密码的Zuul过滤器
  * @Author WeiShiHuai
